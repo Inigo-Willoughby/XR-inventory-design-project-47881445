@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class PlayerHand : MonoBehaviour
 {
     public Item itemInHand;
-    [SerializeField] private NearFarInteractor raycast;
+    private NearFarInteractor raycast;
 
     [SerializeField] private InputActionAsset ActionMap;
     private InputAction triggerButton;
@@ -16,6 +16,7 @@ public class PlayerHand : MonoBehaviour
     [HideInInspector] public GameObject ItemPoint { get => itemPoint; }
     [SerializeField] private bool isFlatScreenMode = true;
     [HideInInspector] public bool IsFlatScreenMode { get => isFlatScreenMode; }
+    private bool isHolding = false;
 
     void OnEnable()
     {
@@ -23,11 +24,6 @@ public class PlayerHand : MonoBehaviour
         {
             raycast = GetComponentInChildren<NearFarInteractor>();
         }
-
-        /*if(directInteractor==null)
-        {
-            directInteractor = GetComponentInChildren<DirectInteractor>();
-        }*/
 
         XRInteractionGroup inGroup = GetComponent<XRInteractionGroup>();
 
@@ -42,7 +38,6 @@ public class PlayerHand : MonoBehaviour
         if(gripButton!=null)
         {
             gripButton.Enable();
-            gripButton.started += GripStarted;
             gripButton.performed += GripPerformed;
             gripButton.canceled += GripCanceled;
         }
@@ -58,7 +53,6 @@ public class PlayerHand : MonoBehaviour
         if(gripButton != null)
         {
             gripButton.Disable();
-            gripButton.started -= GripStarted;
             gripButton.performed -= GripPerformed;
             gripButton.canceled -= GripCanceled;
         }
@@ -73,6 +67,7 @@ public class PlayerHand : MonoBehaviour
     //remove item from hand
     public void RemoveItem()
     {
+        Destroy(itemInHand.transform.gameObject);
         itemInHand = null;
     }
 
@@ -89,14 +84,23 @@ public class PlayerHand : MonoBehaviour
         }
     }
 
-    private void GripStarted(InputAction.CallbackContext context)
-    {
-        Debug.Log("Started");
-    }
-
     private void GripCanceled(InputAction.CallbackContext context)
     {
-        Debug.Log("Cancelled");
+        if(this.itemInHand!=null)
+        {
+            if(isHolding)
+            {
+                Debug.Log("removing item");
+                this.itemInHand.Drop();
+                this.itemInHand = null;
+                isHolding = false;
+            }
+            else
+            {
+                Debug.Log("setting holding mode");
+                isHolding = true;
+            }
+        }
     }
 
     private void GripPerformed(InputAction.CallbackContext context)
@@ -111,21 +115,39 @@ public class PlayerHand : MonoBehaviour
 
         if(isFlatScreenMode)
         {
-            //if(grabRaycast.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-            //{
-                /*Item item = RayCastResult.gameObject.GetComponent<Item>();
-                if(item!=null)
+            RaycastHit hit;
+            if(Physics.Raycast(raycast.transform.position, transform.forward, out hit, 10f))
+            {
+                Item newItem = hit.transform.gameObject.GetComponent<Item>();
+                if(newItem!=null)
                 {
                     if(this.itemInHand==null)
                     {
-                        Debug.Log("Can Pickup item");
+                        newItem.pickUp(this);
                     }
                     else
                     {
-                        Debug.Log("Cannot pick up item");
+                        Debug.Log("Item already in hand");
                     }
-                }*/
-            //}
+                }
+            }
+            //cast a manual raycasthit?
+            /*if(raycast==null) { return; }
+            if (raycast.interactablesHovered.Count > 0)
+            {
+                Item newItem = raycast.interactablesHovered[0].transform.gameObject.GetComponent<Item>();
+                if(newItem!=null)
+                {
+                    if(this.itemInHand==null)
+                    {
+                        newItem.pickUp(this);
+                    }
+                    else
+                    {
+                        Debug.Log("Item already in hand");
+                    }
+                }
+            }*/
         }
         else
         {

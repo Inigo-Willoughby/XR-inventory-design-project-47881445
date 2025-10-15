@@ -1,38 +1,45 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class InventorySlot : MonoBehaviour
 {
     public Item itemInSlot;
     [SerializeField] private Button button;
+    [SerializeField] private TextMeshProUGUI slotText;
 
     private void Awake()
     {
         button = this.GetComponent<Button>();
+        slotText = this.GetComponentInChildren<TextMeshProUGUI>();
+        if(slotText!=null)
+        {
+            slotText.text = "";
+        }
     }
 
     private void tryAddItem(PlayerHand hand)
     {
         Debug.Log("trying to add item from " + hand);
-        //check if slot is empty
-        //if(hand.itemInHand==null) { return; }
-        //remove item from player's hand
-        //addItem(item)
+        Item handItem = hand.itemInHand;
+        if(handItem==null) { return; }
+        addItem(handItem);
+        hand.RemoveItem();
     }
 
     private void addItem(Item newItem)
     {
-        //set itemInSlot to new item
-        //add icon to slot visual      
+        itemInSlot = newItem;
+        slotText.text = itemInSlot.prefab.name;      
     } 
 
     private void tryRemoveItem(PlayerHand hand)
     {
+        if(this.itemInSlot==null) { return; }
+        if(hand.itemInHand!=null) { return; }
         Debug.Log("trying to remove item to " + hand);
-        //check if slot has item
-        //if(hand.itemInHand==null) { return; }
         //remove item from inventory slot
         //removeItem(item);
     }
