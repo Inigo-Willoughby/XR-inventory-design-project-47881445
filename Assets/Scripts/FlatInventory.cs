@@ -40,6 +40,11 @@ public class FlatInventory : InventoryMaster
         }
     }
 
+    /*private void SpawnItem(Item item, InventorySlot slot)
+    {
+        GameObject newItem = Instantiate(item.prefab, slot.transform.position);
+    }*/
+
     /*add item void:
     if(!selectedInventoryTab.InventorySlot.checkIfEmpty){ return };
     check if there is an item in the player's hand

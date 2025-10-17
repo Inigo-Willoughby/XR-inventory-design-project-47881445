@@ -69,6 +69,7 @@ public class PlayerHand : MonoBehaviour
     {
         Destroy(itemInHand.transform.gameObject);
         itemInHand = null;
+        isHolding = false;
     }
 
     private void TriggerEvent(InputAction.CallbackContext context)
@@ -79,6 +80,7 @@ public class PlayerHand : MonoBehaviour
             InventorySlot slot = RayCastResult.gameObject.GetComponent<InventorySlot>();
             if(slot!=null)
             {
+                Debug.Log("1");
                 slot.interactWithSlot(this);
             }
         }
@@ -90,14 +92,12 @@ public class PlayerHand : MonoBehaviour
         {
             if(isHolding)
             {
-                Debug.Log("removing item");
                 this.itemInHand.Drop();
                 this.itemInHand = null;
                 isHolding = false;
             }
             else
             {
-                Debug.Log("setting holding mode");
                 isHolding = true;
             }
         }
@@ -123,6 +123,7 @@ public class PlayerHand : MonoBehaviour
                 {
                     if(this.itemInHand==null)
                     {
+                        Debug.Log("Picking up item");
                         newItem.pickUp(this);
                     }
                     else
@@ -131,23 +132,6 @@ public class PlayerHand : MonoBehaviour
                     }
                 }
             }
-            //cast a manual raycasthit?
-            /*if(raycast==null) { return; }
-            if (raycast.interactablesHovered.Count > 0)
-            {
-                Item newItem = raycast.interactablesHovered[0].transform.gameObject.GetComponent<Item>();
-                if(newItem!=null)
-                {
-                    if(this.itemInHand==null)
-                    {
-                        newItem.pickUp(this);
-                    }
-                    else
-                    {
-                        Debug.Log("Item already in hand");
-                    }
-                }
-            }*/
         }
         else
         {

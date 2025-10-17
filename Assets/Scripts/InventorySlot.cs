@@ -24,43 +24,63 @@ public class InventorySlot : MonoBehaviour
     {
         Debug.Log("trying to add item from " + hand);
         Item handItem = hand.itemInHand;
+        Debug.Log(handItem);
         if(handItem==null) { return; }
-        addItem(handItem);
+        updateSlot(handItem);
         hand.RemoveItem();
     }
-
-    private void addItem(Item newItem)
-    {
-        itemInSlot = newItem;
-        slotText.text = itemInSlot.prefab.name;      
-    } 
 
     private void tryRemoveItem(PlayerHand hand)
     {
         if(this.itemInSlot==null) { return; }
-        if(hand.itemInHand!=null) { return; }
+
+        Item slotItem = this.itemInSlot;
+
+        if(hand.itemInHand!=null) 
+        {
+            Debug.Log("Item already in hand!");
+        }
+        else
+        {
+            Debug.Log("Trying to remove item");
+            updateSlot(null);
+            var newItem = Instantiate(slotItem);
+            slotItem.pickUp(hand);
+        }
         Debug.Log("trying to remove item to " + hand);
-        //remove item from inventory slot
-        //removeItem(item);
     }
 
-    private void removeItem()
+    private void updateSlot(Item newItem)
     {
-        //add item to player's hand
+        itemInSlot = newItem;
+        if(newItem!=null)
+        {
+            slotText.text = newItem.prefab.name;
+        }
+        else
+        {
+            slotText.text = "";
+        }
     }
 
     public void interactWithSlot(PlayerHand hand)
     {
-        Debug.Log("clicked with " + hand);
-        //get whichever hand interacted with the button
+        Debug.Log("Interacting with slot");
         if(checkIfEmpty())
         {
+            Debug.Log("SLOT IS EMPTY");
             tryAddItem(hand);
         }
         else
         {
+            Debug.Log("SLOT HAS ITEM");
             tryRemoveItem(hand);
         }
+    }
+
+    private bool checkIfEmptyHand(PlayerHand hand)
+    {
+        return hand.itemInHand == null;
     }
 
     private bool checkIfEmpty()

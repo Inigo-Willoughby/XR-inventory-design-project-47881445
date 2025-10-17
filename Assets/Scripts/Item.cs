@@ -33,6 +33,7 @@ public class Item : MonoBehaviour
         if(rb!=null)
         {
             rb.useGravity = !isHeld;
+            rb.isKinematic = isHeld;
         } 
     }
 }
