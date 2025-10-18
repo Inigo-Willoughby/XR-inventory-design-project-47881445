@@ -74,7 +74,6 @@ public class InventorySlot : MonoBehaviour
 
     private void updateSlot(ItemData newItem)
     {
-        Debug.Log("ADDING " + newItem + " TO SLOT");
         this.itemInSlot = newItem;
         if(newItem!=null)
         {
