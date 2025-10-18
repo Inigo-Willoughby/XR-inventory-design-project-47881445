@@ -6,12 +6,16 @@ public class FlatInventory : InventoryMaster
     public GameObject UIPivot;
     private Quaternion currPlayerRotation;
     [SerializeField] private Camera headset;
+    [SerializeField] private GameObject section1;
+    [SerializeField] private GameObject section2;
+    [SerializeField] private GameObject section3;
 
     private InputAction inventoryButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currPlayerRotation = Quaternion.Euler(0, headset.transform.eulerAngles.y, 0);
+        updateLayout(1);
     }
 
     private void OnEnable()
@@ -38,6 +42,13 @@ public class FlatInventory : InventoryMaster
             currPlayerRotation = Quaternion.Euler(0, headset.transform.eulerAngles.y, 0);
             UIPivot.transform.rotation = currPlayerRotation;
         }
+    }
+
+    public void updateLayout(int tab)
+    {
+        section1.SetActive(tab==1);
+        section2.SetActive(tab==2);
+        section3.SetActive(tab==3);
     }
 
     /*private void SpawnItem(Item item, InventorySlot slot)
