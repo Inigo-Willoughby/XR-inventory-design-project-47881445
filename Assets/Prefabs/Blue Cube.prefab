@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6871530233550717200}
+  data: {fileID: 11400000, guid: 7f6f1628e2e5c85448ec55dc0a28d729, type: 2}
 --- !u!54 &2824114579264193131
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -67,20 +68,23 @@ public class PlayerHand : MonoBehaviour
     //remove item from hand
     public void RemoveItem()
     {
-        Destroy(itemInHand.transform.gameObject);
-        itemInHand = null;
-        isHolding = false;
+        if(itemInHand!=null)
+        {
+            Destroy(itemInHand.gameObject);
+            itemInHand = null;
+            isHolding = false;
+        }
     }
 
     private void TriggerEvent(InputAction.CallbackContext context)
     {
-        if(raycast==null) { return; }
+        if(raycast==null){ return; }
         if(raycast.TryGetCurrentUIRaycastResult(out RaycastResult RayCastResult))
         {
-            InventorySlot slot = RayCastResult.gameObject.GetComponent<InventorySlot>();
+            Debug.Log(RayCastResult);
+            InventorySlot slot = RayCastResult.gameObject.GetComponentInParent<InventorySlot>();
             if(slot!=null)
             {
-                Debug.Log("1");
                 slot.interactWithSlot(this);
             }
         }

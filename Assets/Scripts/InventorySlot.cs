@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -6,13 +7,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Item itemInSlot;
+    public ItemData itemInSlot;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI slotText;
 
     private void Awake()
     {
         button = this.GetComponent<Button>();
+        button.onClick.AddListener(OnSlotClicked);
         slotText = this.GetComponentInChildren<TextMeshProUGUI>();
         if(slotText!=null)
         {
@@ -20,21 +22,41 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+    public void interactWithSlot(PlayerHand hand)
+    {
+        if(checkIfEmpty())
+        {
+            tryAddItem(hand);
+        }
+        else
+        {
+            tryRemoveItem(hand);
+        }
+    }
+
+    private void OnSlotClicked()
+    {
+        Debug.Log("Clicked");
+    }
+
+    //try and add item to slot
     private void tryAddItem(PlayerHand hand)
     {
-        Debug.Log("trying to add item from " + hand);
-        Item handItem = hand.itemInHand;
-        Debug.Log(handItem);
-        if(handItem==null) { return; }
-        updateSlot(handItem);
+        if(hand == null ||hand.itemInHand == null) { return; }
+
+        ItemData newItem = hand.itemInHand.data;
+
+        updateSlot(newItem);
+
         hand.RemoveItem();
     }
 
+    //try and remove item from slot
     private void tryRemoveItem(PlayerHand hand)
     {
-        if(this.itemInSlot==null) { return; }
+        /*if(hand == null || this.itemInSlot==null) { return; }
 
-        Item slotItem = this.itemInSlot;
+        ItemData currItem = this.itemInSlot;
 
         if(hand.itemInHand!=null) 
         {
@@ -44,18 +66,19 @@ public class InventorySlot : MonoBehaviour
         {
             Debug.Log("Trying to remove item");
             updateSlot(null);
-            var newItem = Instantiate(slotItem);
-            slotItem.pickUp(hand);
+            var newItem = Instantiate(currItem);
+            currItem.pickUp(hand);
         }
-        Debug.Log("trying to remove item to " + hand);
+        Debug.Log("trying to remove item to " + hand);*/
     }
 
-    private void updateSlot(Item newItem)
+    private void updateSlot(ItemData newItem)
     {
-        itemInSlot = newItem;
+        Debug.Log("ADDING " + newItem + " TO SLOT");
+        this.itemInSlot = newItem;
         if(newItem!=null)
         {
-            slotText.text = newItem.prefab.name;
+            slotText.text = itemInSlot.itemName;
         }
         else
         {
@@ -63,24 +86,9 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
-    public void interactWithSlot(PlayerHand hand)
+    public void ClearSlot()
     {
-        Debug.Log("Interacting with slot");
-        if(checkIfEmpty())
-        {
-            Debug.Log("SLOT IS EMPTY");
-            tryAddItem(hand);
-        }
-        else
-        {
-            Debug.Log("SLOT HAS ITEM");
-            tryRemoveItem(hand);
-        }
-    }
-
-    private bool checkIfEmptyHand(PlayerHand hand)
-    {
-        return hand.itemInHand == null;
+        updateSlot(null);
     }
 
     private bool checkIfEmpty()

@@ -8,6 +8,8 @@ public class Item : MonoBehaviour
     //(Other, Result)
     private bool isHeld;
 
+    public ItemData data;
+
     public void pickUp(PlayerHand hand)
     {
         if(hand.IsFlatScreenMode)
