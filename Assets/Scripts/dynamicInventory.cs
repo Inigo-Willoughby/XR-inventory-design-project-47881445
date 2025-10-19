@@ -37,14 +37,13 @@ public class dynamicInventory : InventoryMaster
     private void OnGrab(SelectEnterEventArgs args)
     {
         isHeld = true;
-        Debug.Log("released");
         showMenu(!isHeld);
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
         isHeld = false;
-        Debug.Log("released");
+        //set upright
         showMenu(isHeld == false && holstered == false);
     }
 

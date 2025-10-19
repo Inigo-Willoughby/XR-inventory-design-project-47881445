@@ -10,6 +10,7 @@ public class InventorySlot : MonoBehaviour
     public ItemData itemInSlot;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI slotText;
+    public XRInteractionManager interactionManager;
 
     private void Awake()
     {
@@ -54,22 +55,10 @@ public class InventorySlot : MonoBehaviour
     //try and remove item from slot
     private void tryRemoveItem(PlayerHand hand)
     {
-        /*if(hand == null || this.itemInSlot==null) { return; }
-
-        ItemData currItem = this.itemInSlot;
-
-        if(hand.itemInHand!=null) 
-        {
-            Debug.Log("Item already in hand!");
-        }
-        else
-        {
-            Debug.Log("Trying to remove item");
-            updateSlot(null);
-            var newItem = Instantiate(currItem);
-            currItem.pickUp(hand);
-        }
-        Debug.Log("trying to remove item to " + hand);*/
+        if(hand == null || this.itemInSlot==null) { return; }
+        
+        GameObject ItemObject = Instantiate(this.itemInSlot.prefab, transform.position, transform.rotation);
+        updateSlot(null);
     }
 
     private void updateSlot(ItemData newItem)
@@ -83,11 +72,6 @@ public class InventorySlot : MonoBehaviour
         {
             slotText.text = "";
         }
-    }
-
-    public void ClearSlot()
-    {
-        updateSlot(null);
     }
 
     private bool checkIfEmpty()

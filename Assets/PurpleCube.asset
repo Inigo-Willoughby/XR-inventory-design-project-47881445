@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036de20c9ce64f146ba9ad5bc40e2a1f, type: 3}
+  m_Name: PurpleCube
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5625674127983336165, guid: 2a87167c62d6a674e8bc2b3ccd61f3f2, type: 3}
+  itemName: Purple Cube

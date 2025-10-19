@@ -41,7 +41,7 @@ public class PlayerHand : MonoBehaviour
         }
     }
 
-    //add item to hand
+    //add item to hand from inventory
     public void AddItem(Item addedItem)
     {
         if(addedItem == null) { return; }
