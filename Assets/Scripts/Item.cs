@@ -1,32 +1,55 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Item : MonoBehaviour
 {
     public GameObject prefab;
-    //other items that this can be crafted with
-    //(Other, Result)
-    //(Other, Result)
     private bool isHeld;
-
+    private XRGrabInteractable grabInteractable;
     public ItemData data;
 
-    public void pickUp(PlayerHand hand)
+    private void Awake()
     {
-        if(hand.IsFlatScreenMode)
+        grabInteractable = this.GetComponent<XRGrabInteractable>();
+    }
+
+    void OnEnable()
+    {
+        if(grabInteractable != null)
         {
-            this.transform.position = hand.ItemPoint.transform.position;
-            this.transform.SetParent(hand.ItemPoint.transform);
-            isHeld = true;
-            updateStatus();
+            grabInteractable.selectEntered.AddListener(OnGrab);
+            grabInteractable.selectExited.AddListener(OnRelease);
+        }
+    }
+
+    void OnDisable()
+    {
+        if(grabInteractable != null)
+        {
+            grabInteractable.selectEntered.RemoveListener(OnGrab);
+            grabInteractable.selectExited.RemoveListener(OnRelease);
+        }
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        var interactor = args.interactorObject;
+        PlayerHand hand = interactor.transform.GetComponentInParent<PlayerHand>();
+        if(hand!=null)
+        {
             hand.AddItem(this);
         }
-    }   
+    }
 
-    public void Drop()
+    private void OnRelease(SelectExitEventArgs args)
     {
-        this.transform.SetParent(null);
-        isHeld = false;
-        updateStatus();
+        var interactor = args.interactorObject;
+        PlayerHand hand = interactor.transform.GetComponentInParent<PlayerHand>();
+        if(hand!=null)
+        {
+            hand.DropItem();
+        }
     }
 
     private void updateStatus()

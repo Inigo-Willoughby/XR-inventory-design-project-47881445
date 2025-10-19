@@ -1,23 +1,51 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class dynamicInventory : InventoryMaster
 {
     private InputAction gripButton;
     [SerializeField] private bool isHeld;
     [SerializeField] private bool holstered;
-    private 
+    private XRGrabInteractable grabInteractable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created   
     
-    void Start()
+    private void Awake()
     {
-        //add listener for being grabbed
+        grabInteractable = this.GetComponent<XRGrabInteractable>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        
+        if(grabInteractable != null)
+        {
+            grabInteractable.selectEntered.AddListener(OnGrab);
+            grabInteractable.selectExited.AddListener(OnRelease);
+        }
+    }
+
+    void OnDisable()
+    {
+        if(grabInteractable != null)
+        {
+            grabInteractable.selectEntered.RemoveListener(OnGrab);
+            grabInteractable.selectExited.RemoveListener(OnRelease);
+        }
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        isHeld = true;
+        Debug.Log("released");
+        showMenu(!isHeld);
+    }
+
+    private void OnRelease(SelectExitEventArgs args)
+    {
+        isHeld = false;
+        Debug.Log("released");
+        showMenu(isHeld == false && holstered == false);
     }
 
     //showMenu(isHeld == false && holstered == false);
