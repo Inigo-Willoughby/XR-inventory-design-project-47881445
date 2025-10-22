@@ -31,8 +31,6 @@ public abstract class InventoryMaster : MonoBehaviour
     //check for available tab
     //check if tab is occupied
 
-    //template for adding item //flat = trigger, dynamic = place in inventory slot collider
-    //template for removing item //flat = click on tab in inventory, dynamic = grab from inventory
     //template for crafting coroutine
     /*
         get item1

@@ -18,8 +18,8 @@ public class Item : MonoBehaviour
     {
         if(grabInteractable != null)
         {
-            grabInteractable.selectEntered.AddListener(OnGrab);
-            grabInteractable.selectExited.AddListener(OnRelease);
+            grabInteractable.selectEntered.AddListener(OnSelectEnter);
+            grabInteractable.selectExited.AddListener(OnSelectExit);
         }
     }
 
@@ -27,38 +27,38 @@ public class Item : MonoBehaviour
     {
         if(grabInteractable != null)
         {
-            grabInteractable.selectEntered.RemoveListener(OnGrab);
-            grabInteractable.selectExited.RemoveListener(OnRelease);
+            grabInteractable.selectEntered.RemoveListener(OnSelectEnter);
+            grabInteractable.selectExited.RemoveListener(OnSelectExit);
         }
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
+    private void OnSelectEnter(SelectEnterEventArgs args)
     {
         var interactor = args.interactorObject;
         PlayerHand hand = interactor.transform.GetComponentInParent<PlayerHand>();
+        DynamicInventorySlot slot = interactor.transform.GetComponent<DynamicInventorySlot>();
         if(hand!=null)
         {
             hand.AddItem(this);
         }
+        else if(slot!=null)
+        {
+            slot.AddItem(this);
+        }
     }
 
-    private void OnRelease(SelectExitEventArgs args)
+    private void OnSelectExit(SelectExitEventArgs args)
     {
         var interactor = args.interactorObject;
         PlayerHand hand = interactor.transform.GetComponentInParent<PlayerHand>();
+        DynamicInventorySlot slot = interactor.transform.GetComponent<DynamicInventorySlot>();
         if(hand!=null)
         {
             hand.DropItem();
         }
-    }
-
-    private void updateStatus()
-    {
-        Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-        if(rb!=null)
+        else if(slot!=null)
         {
-            rb.useGravity = !isHeld;
-            rb.isKinematic = isHeld;
-        } 
+            slot.RemoveItem();
+        }
     }
 }

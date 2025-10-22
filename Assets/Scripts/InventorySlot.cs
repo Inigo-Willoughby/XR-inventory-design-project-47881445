@@ -1,21 +1,24 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class InventorySlot : MonoBehaviour
 {
     public ItemData itemInSlot;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI slotText;
-    public XRInteractionManager interactionManager;
 
     private void Awake()
     {
         button = this.GetComponent<Button>();
         button.onClick.AddListener(OnSlotClicked);
+
         slotText = this.GetComponentInChildren<TextMeshProUGUI>();
         if(slotText!=null)
         {
@@ -56,9 +59,11 @@ public class InventorySlot : MonoBehaviour
     private void tryRemoveItem(PlayerHand hand)
     {
         if(hand == null || this.itemInSlot==null) { return; }
+        //get interactor from hand
         
         GameObject ItemObject = Instantiate(this.itemInSlot.prefab, transform.position, transform.rotation);
         updateSlot(null);
+        StartCoroutine(moveItemToHand(hand.Raycast, ItemObject.gameObject.GetComponent<XRGrabInteractable>()));
     }
 
     private void updateSlot(ItemData newItem)
@@ -77,5 +82,13 @@ public class InventorySlot : MonoBehaviour
     private bool checkIfEmpty()
     {
         return itemInSlot==null;
+    }
+
+    IEnumerator moveItemToHand(XRBaseInteractor hand, XRBaseInteractable interactable)
+    {
+        yield return null;
+
+        XRInteractionManager manager = FindFirstObjectByType<XRInteractionManager>();
+        manager.SelectEnter(hand as IXRSelectInteractor, interactable as IXRSelectInteractable);
     }
 }

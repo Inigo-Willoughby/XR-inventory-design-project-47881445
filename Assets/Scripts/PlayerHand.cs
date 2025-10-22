@@ -9,6 +9,7 @@ public class PlayerHand : MonoBehaviour
 {
     public Item itemInHand;
     private NearFarInteractor raycast;
+    public NearFarInteractor Raycast { get => raycast; }
 
     [SerializeField] private InputActionAsset ActionMap;
     private InputAction triggerButton;
