@@ -44,7 +44,7 @@ public class Item : MonoBehaviour
         else if(slot!=null)
         {
             slot.AddItem(this);
-            this.transform.SetParent(slot.transform);
+            //this.transform.SetParent(slot.transform, true);
         }
     }
 

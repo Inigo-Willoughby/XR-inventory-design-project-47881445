@@ -9,6 +9,7 @@ public abstract class InventoryMaster : MonoBehaviour
     [SerializeField] protected InputActionAsset ActionMap;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         showMenu(false);
@@ -38,6 +39,11 @@ public abstract class InventoryMaster : MonoBehaviour
             craft item1.result;
         }
     */
+
+    public void CraftItem(Item item1, Item item2)
+    {
+
+    }
 
     //template for opening inventory //flat=button press, dynamic = reach behind back
     /*

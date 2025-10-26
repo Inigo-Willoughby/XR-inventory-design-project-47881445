@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class DynamicInventorySlot : MonoBehaviour
+public class DynamicInventorySlot : Slot
 {
-    public ItemData itemInSlot;
 
     //try and add item to slot
     public void AddItem(Item item)

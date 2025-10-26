@@ -8,9 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : Slot
 {
-    public ItemData itemInSlot;
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI slotText;
 

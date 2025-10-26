@@ -37,13 +37,14 @@ public class dynamicInventory : InventoryMaster
     private void OnGrab(SelectEnterEventArgs args)
     {
         isHeld = true;
+        //do something to all the items in the inventory
         showMenu(!isHeld);
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
         isHeld = false;
-        //set upright
+        this.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         showMenu(isHeld == false && holstered == false);
     }
 
