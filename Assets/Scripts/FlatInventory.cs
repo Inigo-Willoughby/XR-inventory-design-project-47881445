@@ -10,7 +10,7 @@ public class FlatInventory : InventoryMaster
     [SerializeField] private GameObject section2;
     [SerializeField] private GameObject section3;
 
-    [SerializeField] private InputAction inventoryButton;
+    private InputAction inventoryButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,11 +30,7 @@ public class FlatInventory : InventoryMaster
 
     private void OnDisable()
     {
-        if(inventoryButton != null) 
-        {
-            inventoryButton.performed -= ToggleMenu;
-            inventoryButton.Disable();
-        }
+        if(inventoryButton != null) {inventoryButton.Disable();}
     }
 
     private void ToggleMenu(InputAction.CallbackContext ctx)
