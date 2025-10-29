@@ -199,7 +199,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInHand: {fileID: 0}
   ActionMap: {fileID: -944628639613478452, guid: 0ba01646fa318534888c29bc39a4d558, type: 3}
-  itemPoint: {fileID: 0}
   isFlatScreenMode: 1
 --- !u!1 &1670256624
 GameObject:
@@ -400,7 +399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInHand: {fileID: 0}
   ActionMap: {fileID: -944628639613478452, guid: 0ba01646fa318534888c29bc39a4d558, type: 3}
-  itemPoint: {fileID: 0}
   isFlatScreenMode: 1
 --- !u!1 &1680501586
 GameObject:
@@ -1196,7 +1194,7 @@ MonoBehaviour:
   m_Camera: {fileID: 1767192439}
   m_OriginBaseGameObject: {fileID: 1717954561962503725}
   m_CameraFloorOffsetObject: {fileID: 1680501586}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.36144
 --- !u!143 &6232745470614056090
 CharacterController:

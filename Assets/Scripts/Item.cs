@@ -7,11 +7,13 @@ public class Item : MonoBehaviour
     public GameObject prefab;
     private bool isHeld;
     private XRGrabInteractable grabInteractable;
+    private Rigidbody rb;
     public ItemData data;
 
     private void Awake()
     {
         grabInteractable = this.GetComponent<XRGrabInteractable>();
+        rb = this.GetComponent<Rigidbody>();
     }
 
     void OnEnable()
@@ -44,7 +46,7 @@ public class Item : MonoBehaviour
         else if(slot!=null)
         {
             slot.AddItem(this);
-            //this.transform.SetParent(slot.transform, true);
+            this.transform.SetParent(slot.transform);
         }
     }
 
@@ -61,6 +63,20 @@ public class Item : MonoBehaviour
         {
             slot.RemoveItem();
             this.transform.SetParent(null);
+        }
+    }
+
+    public void SetPhysics(bool state)
+    {
+        if(rb)
+        {
+            rb.isKinematic = !state;
+            rb.useGravity = state;
+        }
+        if(grabInteractable)
+        {
+            grabInteractable.enabled = state;
+            Debug.Log("Setting interactivity");
         }
     }
 }

@@ -7,13 +7,13 @@ public abstract class InventoryMaster : MonoBehaviour
     [SerializeField] protected bool isActive = false;
     [HideInInspector] public bool IsActive { get => isActive;}
     [SerializeField] protected InputActionAsset ActionMap;
-
+    [SerializeField] protected Slot[] inventorySlots;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
     {
+        inventorySlots = InventoryObject.GetComponentsInChildren<Slot>();
         showMenu(false);
-        isActive = false;
     }
 
     protected void showMenu(bool state)

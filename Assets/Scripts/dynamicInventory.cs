@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -8,8 +10,7 @@ public class dynamicInventory : InventoryMaster
     private InputAction gripButton;
     [SerializeField] private bool isHeld;
     [SerializeField] private bool holstered;
-    private XRGrabInteractable grabInteractable;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created   
+    private XRGrabInteractable grabInteractable; 
     
     private void Awake()
     {
@@ -37,15 +38,31 @@ public class dynamicInventory : InventoryMaster
     private void OnGrab(SelectEnterEventArgs args)
     {
         isHeld = true;
-        //do something to all the items in the inventory
-        showMenu(!isHeld);
+        showMenu(isHeld == false && holstered == false);
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
         isHeld = false;
-        this.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+        SetRotation();
         showMenu(isHeld == false && holstered == false);
+    }
+
+    private void SetItemPhysics(bool state)
+    {
+        foreach(DynamicInventorySlot s in inventorySlots)
+        {
+            if(s.CurrItem!=null)
+            {
+                s.CurrItem.SetPhysics(state);
+            }
+        }   
+    }
+
+    private void SetRotation()
+    {
+        Vector3 currentEulerAngles = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(0.0f, currentEulerAngles.y, 0.0f);
     }
 
     //showMenu(isHeld == false && holstered == false);

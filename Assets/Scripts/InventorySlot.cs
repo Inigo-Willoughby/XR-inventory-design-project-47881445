@@ -57,8 +57,7 @@ public class InventorySlot : Slot
     //try and remove item from slot
     private void tryRemoveItem(PlayerHand hand)
     {
-        if(hand == null || this.itemInSlot==null) { return; }
-        //get interactor from hand
+        if(hand == null || this.itemInSlot==null || hand.itemInHand != null) { return; }
         
         GameObject ItemObject = Instantiate(this.itemInSlot.prefab, transform.position, transform.rotation);
         updateSlot(null);
