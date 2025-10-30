@@ -2642,7 +2642,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1042209858}
+      addedObject: {fileID: 1272419781}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3088780974210825110, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
@@ -2669,6 +2669,7 @@ GameObject:
   - component: {fileID: 1042209859}
   - component: {fileID: 1042209862}
   - component: {fileID: 1042209861}
+  - component: {fileID: 1042209863}
   m_Layer: 2
   m_Name: Socket Interactor
   m_TagString: Untagged
@@ -2685,11 +2686,11 @@ Transform:
   m_GameObject: {fileID: 1042209857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.144, y: -0.5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1399305476}
+  m_Father: {fileID: 1086588468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
 --- !u!114 &1042209859
 MonoBehaviour:
@@ -2811,6 +2812,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1042209863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042209857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38e50fa1e20df84e87ccbd8219011f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraToFollow: {fileID: 1039375606}
+  FollowCameraTransform: {fileID: 1272419781}
+  FollowCameraRotate: {fileID: 1086588468}
+  TranslateOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1065789239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2925,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1086588467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086588468}
+  m_Layer: 0
+  m_Name: FollowCameraRotate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086588468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086588467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1042209858}
+  m_Father: {fileID: 1272419781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101434649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,6 +3596,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08, y: 0.02964225, z: 0.08}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1272419780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272419781}
+  m_Layer: 0
+  m_Name: FollowCameraTranslate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1272419781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272419780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1086588468}
+  m_Father: {fileID: 1399305476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292809009
 GameObject:
   m_ObjectHideFlags: 0
