@@ -11,10 +11,25 @@ public class dynamicInventory : InventoryMaster
     [SerializeField] private bool isHeld;
     [SerializeField] private bool holstered;
     private XRGrabInteractable grabInteractable; 
+    [SerializeField] private GameObject holster;
     
     private void Awake()
     {
         grabInteractable = this.GetComponent<XRGrabInteractable>();
+        this.transform.position = holster.transform.position;
+    }
+
+    private void Update()
+    {
+        if(!isHeld)
+        {
+            if(Vector3.Distance(this.transform.position, holster.transform.position) > 2.0f)
+            {
+                this.transform.position = holster.transform.position;
+                isHeld = true;
+                showMenu(isHeld == false && holstered == false);
+            }
+        }
     }
 
     void OnEnable()
