@@ -815,22 +815,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &386268725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7632350606255022615, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-  m_PrefabInstance: {fileID: 7382601783053957411}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &386268727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1851520987701703618, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-  m_PrefabInstance: {fileID: 7382601783053957411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386268725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469ead4d5be8209418a46b46dee0a291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &408702922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,17 +1138,6 @@ MonoBehaviour:
   section1: {fileID: 907334488}
   section2: {fileID: 1836987507}
   section3: {fileID: 1996632508}
---- !u!114 &590624061 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-  m_PrefabInstance: {fileID: 7382601783053957411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &653261741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,17 +1467,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680880860}
   m_CullTransparentMesh: 1
---- !u!114 &709325448 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-  m_PrefabInstance: {fileID: 7382601783053957411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &731814926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,11 +2163,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138749734}
   m_CullTransparentMesh: 1
---- !u!1 &1151821683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1099939293687313905, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-  m_PrefabInstance: {fileID: 7382601783053957411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1257351895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,30 +5764,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 451806873078329945, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: DoorObject
-      value: 
-      objectReference: {fileID: 1151821683}
     - target: {fileID: 922011106860390296, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
-    - target: {fileID: 1851520987701703618, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: DoorObject
-      value: 
-      objectReference: {fileID: 386268725}
-    - target: {fileID: 1851520987701703618, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: sockets.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851520987701703618, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: 'sockets.Array.data[0]'
-      value: 
-      objectReference: {fileID: 590624061}
-    - target: {fileID: 1851520987701703618, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: 'sockets.Array.data[1]'
-      value: 
-      objectReference: {fileID: 709325448}
     - target: {fileID: 3745131928765859672, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4012318
@@ -5870,62 +5807,6 @@ PrefabInstance:
     - target: {fileID: 3745131928765859672, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 386268727}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TryUnlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Door, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7122337486484342913, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 386268727}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TryUnlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Door, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173126153854432844, guid: 5bbc96d1cdc93214592dd0def6d7df98, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

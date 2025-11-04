@@ -967,7 +967,7 @@ MonoBehaviour:
   sockets:
   - {fileID: 7106004727105978048}
   - {fileID: 6109234133239536017}
-  DoorObject: {fileID: 0}
+  DoorObject: {fileID: 1099939293687313905}
 --- !u!1 &1182648821810795905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2455,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1851520987701703618}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: TryUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -3305,7 +3317,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1851520987701703618}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: TryUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -3551,8 +3575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469ead4d5be8209418a46b46dee0a291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sockets: []
-  DoorObject: {fileID: 0}
+  sockets:
+  - {fileID: 7122337486484342913}
+  - {fileID: 8173126153854432844}
+  DoorObject: {fileID: 7632350606255022615}
 --- !u!1 &8505621811723088647
 GameObject:
   m_ObjectHideFlags: 0
