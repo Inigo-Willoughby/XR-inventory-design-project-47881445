@@ -64,29 +64,4 @@ public class dynamicInventory : InventoryMaster
         Vector3 currentEulerAngles = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0.0f, currentEulerAngles.y, 0.0f);
     }
-
-    //showMenu(isHeld == false && holstered == false);
-    
-    //if grabbing while active
-    ///disable Menu
-
-    //void for adding item
-    /*
-        add image to slot
-    */
-    //void for removing item
-    //void for crafting item
-
-    //open inventory
-    //move backpack pivot to player hand
-    //base.start
-
-
-
-    //close inventory
-    //Move object back to anchor
-    //base.start
-
-    //check for free tab
-    //check if tab is occupied
 }
