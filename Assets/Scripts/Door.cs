@@ -1,16 +1,28 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class Door : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private XRSocketInteractor[] sockets;
+    [SerializeField] private GameObject DoorObject;
+
+    private bool checkIfSocketsFull()
     {
-        
+        foreach (XRSocketInteractor socket in sockets)
+        {
+            if(!socket.hasSelection)
+            {
+                return false;
+            }
+        }
+       return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TryUnlock()
     {
-        
+        DoorObject.SetActive(!checkIfSocketsFull());
     }
 }
